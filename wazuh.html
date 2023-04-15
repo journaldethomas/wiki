@@ -2,15 +2,22 @@
 title: wazuh
 description: 
 published: true
-date: 2023-04-15T05:32:28.724Z
+date: 2023-04-15T05:43:37.706Z
 tags: 
 editor: ckeditor
 dateCreated: 2023-04-15T05:32:28.724Z
 -->
 
+<h3>Qu'est-ce que Wazuh</h3>
+<p>Wazuh est une plateforme de sécurité open source et entièrement gratuit qui permet de faire du XDR et du SIEM (Security Information and Event Management). Wazuh permet donc de monitorer, de détecter, et d'alerter en cas d'événements liés à la sécurité ou en cas d'incidents.</p>
+<p>Site web : <a href="https://wazuh.com/">https://wazuh.com/</a></p>
+<p>&nbsp;</p>
 <h3>Installation de Wazuh</h3>
-<p>L'installation est faite sur une VM avec comme OS Ubuntu, 4 CPU et 8Go de RAM comme le préconise l'éditeur pour les petites installations. L'installation de Wazuh indexer, Wazuh server et de Wazuh dashboard est faite sur la même VM en utilisant le script de l'éditeur :</p>
+<p>L'installation est faite sur une VM avec comme OS Ubuntu 22.04, 4 CPU et 8Go de RAM comme le préconise l'éditeur pour les petites installations. L'arcitecture globale de cette solution est relativement simple avec l'installation en 3 parties :</p>
+<figure class="image"><img src="/deployment-architecture_wazuh.png"></figure>
+<p>L'installation de Wazuh indexer, Wazuh server et de Wazuh dashboard est faite sur la même VM en utilisant le script de l'éditeur :</p>
 <p><code>curl -sO https://packages.wazuh.com/4.4/wazuh-install.sh &amp;&amp; sudo bash ./wazuh-install.sh -a</code></p>
+<p>L'installation est très simple et le script fonctionne parfaitement.</p>
 <p>Ensuite il ne reste plus qu'à se rendre à l'adresse du serveur avec le user et le mot de passe indiqués à la fin de l'installation.</p>
 <p>&nbsp;</p>
 <h3>Installation des agents</h3>
