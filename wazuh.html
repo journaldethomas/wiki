@@ -1,0 +1,39 @@
+<!--
+title: wazuh
+description: 
+published: true
+date: 2023-04-15T05:32:28.724Z
+tags: 
+editor: ckeditor
+dateCreated: 2023-04-15T05:32:28.724Z
+-->
+
+<h3>Installation de Wazuh</h3>
+<p>L'installation est faite sur une VM avec comme OS Ubuntu, 4 CPU et 8Go de RAM comme le préconise l'éditeur pour les petites installations. L'installation de Wazuh indexer, Wazuh server et de Wazuh dashboard est faite sur la même VM en utilisant le script de l'éditeur :</p>
+<p><code>curl -sO https://packages.wazuh.com/4.4/wazuh-install.sh &amp;&amp; sudo bash ./wazuh-install.sh -a</code></p>
+<p>Ensuite il ne reste plus qu'à se rendre à l'adresse du serveur avec le user et le mot de passe indiqués à la fin de l'installation.</p>
+<p>&nbsp;</p>
+<h3>Installation des agents</h3>
+<p>Il faut passer en root et lancer les commandes suivantes :</p>
+<ul>
+  <li>pour installer GPG key</li>
+</ul>
+<p><code>curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import &amp;&amp; chmod 644 /usr/share/keyrings/wazuh.gpg</code></p>
+<ul>
+  <li>pour ajouter le repository</li>
+</ul>
+<p><code>echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | tee -a /etc/apt/sources.list.d/wazuh.list</code></p>
+<ul>
+  <li>mettre à jour les informations des packages</li>
+</ul>
+<p><code>apt-get update</code></p>
+<ul>
+  <li>installation de l'agent à proprement parlé après avoir déclaré dans une variable l'IP de notre notre Wazuh server</li>
+</ul>
+<p><code>WAZUH<i>MANAGER="ip_du</i>_server_manager" apt-get install wazuh-agent</code></p>
+<ul>
+  <li>rendre enable et démarrer le service / agent Wazuh</li>
+</ul>
+<p><code>systemctl daemon-reload</code></p>
+<p><code>systemctl enable wazuh-agent</code></p>
+<p><code>systemctl start wazuh-agent</code></p>
